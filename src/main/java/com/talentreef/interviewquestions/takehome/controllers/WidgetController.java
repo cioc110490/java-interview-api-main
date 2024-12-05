@@ -7,14 +7,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 import java.util.List;
 
 @Slf4j
+@Validated
 @RestController
 @RequestMapping(value = "/v1/widgets", produces = MediaType.APPLICATION_JSON_VALUE)
+
 public class WidgetController {
 
     private final WidgetService widgetService;
