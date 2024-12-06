@@ -8,12 +8,12 @@ The `Widget` model was updated to include `description` and `price` with the fol
     * Constraints:
         * Required.
         * Must be unique.
-        * It is a String between 3 and 100 characters and must be non-null.
+        * Must be a String between 3 and 100 characters and must be non-null.
      
 * `description` A text description of the widget: 
     * Constraints:
         * Required.
-        * It is a String between 5 and 1000 characters and must be non-null.
+        * Must be a String between 5 and 1000 characters and must be non-null.
 
 * `price` The price of the widget: 
     * Constraints:
