@@ -2,6 +2,14 @@
 
 ## Updated
 
+## How to run
+
+```bash
+npm install
+```
+
+## Summary
+
 The `Widget` model was updated to include `description` and `price` with the following contrains:
 
 * `name` The unique identifier for the widget: 
