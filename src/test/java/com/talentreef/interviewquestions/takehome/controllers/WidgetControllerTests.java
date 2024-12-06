@@ -48,6 +48,9 @@ public class WidgetControllerTests {
     mockMvc = MockMvcBuilders.standaloneSetup(widgetController).build();
   }
 
+  /*
+   * Test for listing widgets
+   */
   @Test
   public void when_getAllWidgets_expect_allWidgets() throws Exception {
     Widget widget = Widget.builder().name("Widget von Hammersmark").build();
@@ -65,6 +68,9 @@ public class WidgetControllerTests {
     assertThat(parsedResult).isEqualTo(allWidgets);
   }
 
+  /*
+   * Test for creating widgets
+   */
   @Test
   public void when_createWidget_expect_createdWidget() throws Exception {
     Widget widget = Widget.builder().name("New Widget").description("Description").price(10.0).build();
@@ -83,6 +89,9 @@ public class WidgetControllerTests {
     assertThat(createdWidget.getPrice()).isEqualTo(10.0);
   }
 
+  /*
+   * Test for getting widget by name
+   */
   @Test
   public void when_getWidgetByName_expect_widgetFound() throws Exception {
     Widget widget = Widget.builder().name("Widget1").description("Test Description").price(20.0).build();
@@ -98,21 +107,9 @@ public class WidgetControllerTests {
     assertThat(retrievedWidget.getDescription()).isEqualTo("Test Description");
   }
 
-  @Test
-  public void when_getWidgetByName_expect_correctResponse() throws Exception {
-    Widget existingWidget = Widget.builder().name("Widget1").description("Test Description").price(20.0).build();
-    when(widgetService.getWidgetByName("Widget1")).thenReturn(existingWidget);
-
-    MvcResult result = mockMvc.perform(get("/v1/widgets/Widget1"))
-        .andExpect(status().isOk())
-        .andDo(print())
-        .andReturn();
-
-    Widget retrievedWidget = objectMapper.readValue(result.getResponse().getContentAsString(), Widget.class);
-    assertThat(retrievedWidget.getName()).isEqualTo("Widget1");
-    assertThat(retrievedWidget.getDescription()).isEqualTo("Test Description");
-  }
-
+  /*
+   * Test for updating widget
+   */
   @Test
   public void when_updateWidget_expect_updatedWidget() throws Exception {
     Widget widget = Widget.builder().name("Widget1").description("Updated Description").price(15.0).build();
@@ -131,6 +128,9 @@ public class WidgetControllerTests {
     assertThat(updatedWidget.getPrice()).isEqualTo(15.0);
   }
 
+  /*
+   * Test for deleting widget
+   */
   @Test
   public void when_deleteWidget_expect_success() throws Exception {
     mockMvc.perform(delete("/v1/widgets/Widget1"))
