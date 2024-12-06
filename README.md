@@ -5,7 +5,7 @@
 ## How to run
 
 ```bash
-npm install
+./gradlew bootRun
 ```
 
 ## Summary
