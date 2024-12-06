@@ -28,9 +28,9 @@ public class WidgetController {
     }
 
     /**
-     * API to list all Widgets in the system.
+     * Endpoint to list all Widgets in the system.
      *
-     * @return ResponseEntity containing the list of all widgets.
+     * @return The list of all widgets.
      */
     @GetMapping
     public ResponseEntity<List<Widget>> getAllWidgets() {
@@ -38,10 +38,10 @@ public class WidgetController {
     }
 
     /**
-     * API to create a new Widget.
+     * Endpoint to create a new Widget.
      *
      * @param widget The Widget object provided in the request body.
-     * @return ResponseEntity with the created Widget and HTTP 201 status.
+     * @return The created Widget.
      */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Widget> createWidget(@Valid @RequestBody Widget widget) {
@@ -51,10 +51,10 @@ public class WidgetController {
     }
 
     /**
-     * API to retrieve details of a Widget by its name.
+     * Endpoint to retrieve details of a Widget by its name.
      *
      * @param name The name of the Widget to retrieve.
-     * @return ResponseEntity containing the Widget details if found.
+     * @return The Widget details if found.
      */
     @GetMapping("/{name}")
     public ResponseEntity<Widget> getWidgetByName(@PathVariable String name) {
@@ -64,11 +64,11 @@ public class WidgetController {
     }
 
     /**
-     * API to update a Widget's description or price.
+     * Endpoint to update a Widget's description or price.
      *
      * @param name   The name of the Widget to update.
      * @param widget The Widget object containing updated fields.
-     * @return ResponseEntity with the updated Widget details.
+     * @return The updated Widget details.
      */
     @PutMapping(value = "/{name}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Widget> updateWidget(@PathVariable String name, @Valid @RequestBody Widget widget) {
@@ -78,10 +78,10 @@ public class WidgetController {
     }
 
     /**
-     * API to delete a Widget by its name.
+     * Endpoint to delete a Widget by its name.
      *
      * @param name The name of the Widget to delete.
-     * @return ResponseEntity with HTTP 204 status on successful deletion.
+     * @return HTTP 204 status on successful deletion.
      */
     @DeleteMapping("/{name}")
     public ResponseEntity<Void> deleteWidget(@PathVariable String name) {

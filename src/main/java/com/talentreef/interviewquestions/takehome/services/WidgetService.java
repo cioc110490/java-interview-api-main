@@ -41,7 +41,7 @@ public class WidgetService {
     public Widget createWidget(Widget widget) {
         log.info("Creating widget with name: {}", widget.getName());
         
-        // Check for uniqueness of the name
+        // Check if widget already exists
         if (widgetRepository.existsByName(widget.getName())) {
             throw new WidgetAlreadyExistsException("A Widget with the name '" + widget.getName() + "' already exists.");
         }

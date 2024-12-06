@@ -37,20 +37,8 @@ public class WidgetRepository {
   }
 
   /**
-   * Finds a Widget by its unique name.
-   *
-   * @param name The name of the Widget to search for.
-   * @return An Optional containing the Widget if found, or empty if not.
-   */
-  public Optional<Widget> findById(String name) {
-    return table.stream()
-        .filter((Widget widget) -> name.equals(widget.getName()))
-        .findAny();
-  }
-
-  /**
-   * Saves a Widget to the in-memory database. If a Widget with the same name
-   * exists, it is replaced.
+   * Saves a Widget to the database.
+   * If a Widget with the same name exists, it is replaced.
    *
    * @param widget The Widget to save.
    * @return The saved Widget.
@@ -73,13 +61,14 @@ public class WidgetRepository {
   }
 
   /**
-   * Finds a Widget by its unique name. (Alias for consistency with naming
-   * conventions.)
+   * Finds a Widget by its name.
    *
    * @param name The name of the Widget to search for.
    * @return An Optional containing the Widget if found, or empty if not.
    */
   public Optional<Widget> findByName(String name) {
-    return findById(name); // Reuse existing method for implementation.
+    return table.stream()
+        .filter((Widget widget) -> name.equals(widget.getName()))
+        .findAny();
   }
 }

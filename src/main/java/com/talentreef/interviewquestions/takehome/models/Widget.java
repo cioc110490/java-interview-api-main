@@ -19,6 +19,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
+/**
+ * Represents a Widget entity with details about its name, description, and price.
+ * It includes validation constraints for its fields.
+ */
 @Data
 @Table(
         name = "widgets",
