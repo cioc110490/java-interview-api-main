@@ -7,6 +7,7 @@ The `Widget` model was updated to include `description` and `price` with the fol
 * `name` The unique identifier for the widget: 
     * Constraints:
         * Required.
+        * Must be unique.
         * It is a String between 3 and 100 characters and must be non-null.
      
 * `description` A text description of the widget: 
