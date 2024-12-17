@@ -1,5 +1,6 @@
 package com.talentreef.interviewquestions.takehome.controllers;
 
+import com.talentreef.interviewquestions.takehome.models.PaginatedResult;
 import com.talentreef.interviewquestions.takehome.models.Widget;
 import com.talentreef.interviewquestions.takehome.services.WidgetService;
 import lombok.extern.slf4j.Slf4j;
@@ -38,10 +39,22 @@ public class WidgetController {
     }
 
     /**
+     * Endpoint to retrieve paginated widgets.
+     *
+     * @param page     The current page number.
+     * @param pageSize The size of the page.
+     * @return         A paginated result with widget data and total count.
+     */
+    @GetMapping("/paginated")
+    public PaginatedResult getPaginatedWidgets(@RequestParam(defaultValue = "1") int page, @RequestParam(defaultValue = "4") int pageSize) {
+        return widgetService.getPaginatedWidgets(page, pageSize);
+    }
+
+    /**
      * Endpoint to create a new Widget.
      *
      * @param widget The Widget object provided in the request body.
-     * @return The created Widget.
+     * @return       The created Widget.
      */
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Widget> createWidget(@Valid @RequestBody Widget widget) {
@@ -54,7 +67,7 @@ public class WidgetController {
      * Endpoint to retrieve details of a Widget by its name.
      *
      * @param name The name of the Widget to retrieve.
-     * @return The Widget details if found.
+     * @return     The Widget details if found.
      */
     @GetMapping("/{name}")
     public ResponseEntity<Widget> getWidgetByName(@PathVariable String name) {
@@ -68,7 +81,7 @@ public class WidgetController {
      *
      * @param name   The name of the Widget to update.
      * @param widget The Widget object containing updated fields.
-     * @return The updated Widget details.
+     * @return       The updated Widget details.
      */
     @PutMapping(value = "/{name}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Widget> updateWidget(@PathVariable String name, @Valid @RequestBody Widget widget) {
@@ -81,7 +94,7 @@ public class WidgetController {
      * Endpoint to delete a Widget by its name.
      *
      * @param name The name of the Widget to delete.
-     * @return HTTP 204 status on successful deletion.
+     * @return     HTTP 204 status on successful deletion.
      */
     @DeleteMapping("/{name}")
     public ResponseEntity<Void> deleteWidget(@PathVariable String name) {
